@@ -20,3 +20,19 @@
 	parseFloat()与 parseInt()的第二个区别在于它始终都会忽略前导 的零。parseFloat()可以识别前面讨论过的所有浮点数值格式，也包括十进制整数格式。但十六进制格 式的字符串则始终会被转换成 0。由于 parseFloat()只解析十进制值，因此它没有用第二个参数指定基 数的用法。后还要注意一点：如果字符串包含的是一个可解析为整数的数（没有小数点，或者小数点后 都是零），parseFloat()会返回整数。以下是使用 parseFloat()转换数值的几个典型示例。  
 	var num1 = parseFloat("1234blue");        //1234 （整数） 	var num2 = parseFloat("0xA");              //0 
 	var num3 = parseFloat("22.5");             //22.5 		var num4 = parseFloat("22.34.5");          //22.34 		var num5 = parseFloat("0908.5");          //908.5 		var num6 = parseFloat("3.125e7");        //31250000 
+####String 类型
+	1.字符串用单引号双引号都可以
+	var lastName = "Mike"
+	var firstName = 'Mike'
+	2.转换为字符串
+	var age = 10;
+	var ageAsString = age.toString();
+
+	var num = 10; 
+	alert(num.toString());      // "10" 
+	alert(num.toString(2));     // "1010" 
+	alert(num.toString(8));     // "12"
+	alert(num.toString(10));    // "10" 
+	alert(num.toString(16));    // "a"	
+####Object类型
+	1.var o = new Object();
