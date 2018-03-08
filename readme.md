@@ -32,8 +32,20 @@
 	alert(num.toString());      // "10" 
 	alert(num.toString(2));     // "1010" 
 	alert(num.toString(8));     // "12"
-	alert(num.toString(10));    // "10" 
+	alert(num.toString(10));    // "10"
 	alert(num.toString(16));    // "a"
 
 	Object类型
 	1.var o = new Object();
+=======
+	alert(num.toString(16));    // "a"	
+####Object类型
+	1.var o = new Object();
+###3.5操作符
+####一元操作符
+	***后置型递增递减在语句求值后再递增或递减
+	***前置型递增递减在语句求值前递增或递减
+	
+	一元加操作符对数值不产生影响；
+	一元减操作符用于表示负数。
+	 操作符111
