@@ -37,3 +37,33 @@
 
 	Object类型
 	1.var o = new Object();
+###3.5.4 乘性操作符
+####	1.乘法 var result = 34*56;
+	2.除法 var result = 66/11;
+	3.求模 var result = 25%5;
+####3.6	语句
+	1.if语句
+	if (i > 25)
+	alert("Greater than 25."); // 单行语句
+	else {
+		alert("Less than or equal to 25."); // 代码块中的语句
+	}
+	2.do-while语句
+	var i = 0;
+	do {
+		i += 2;
+	} while (i < 10);
+	alert(i);
+	循环体在代码执行之后，程序至少执行一次。。。
+	3.while语句
+	var i = 0;
+	while (i < 10) {
+	i += 2;
+	}
+	循环体在代码执行之前，程序可以不执行；
+	4.for语句
+	var count = 10;
+	for (var i = 0; i < count; i++)
+	{
+		alert(i);
+	}
