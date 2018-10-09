@@ -20,7 +20,7 @@
 	parseFloat()与 parseInt()的第二个区别在于它始终都会忽略前导 的零。parseFloat()可以识别前面讨论过的所有浮点数值格式，也包括十进制整数格式。但十六进制格 式的字符串则始终会被转换成 0。由于 parseFloat()只解析十进制值，因此它没有用第二个参数指定基 数的用法。后还要注意一点：如果字符串包含的是一个可解析为整数的数（没有小数点，或者小数点后 都是零），parseFloat()会返回整数。以下是使用 parseFloat()转换数值的几个典型示例。  
 	var num1 = parseFloat("1234blue");        //1234 （整数） 	var num2 = parseFloat("0xA");              //0 
 	var num3 = parseFloat("22.5");             //22.5 		var num4 = parseFloat("22.34.5");          //22.34 		var num5 = parseFloat("0908.5");          //908.5 		var num6 = parseFloat("3.125e7");        //31250000 
-###String 类型
+### String 类型
 ####	1.字符串用单引号双引号都可以
 	var lastName = "Mike"
 	var firstName = 'Mike'
@@ -37,11 +37,12 @@
 
 	Object类型
 	1.var o = new Object();
-###3.5.4 乘性操作符
-####	1.乘法 var result = 34*56;
+### 3.5.4 乘性操作符
+####	
+	1.乘法 var result = 34*56;
 	2.除法 var result = 66/11;
 	3.求模 var result = 25%5;
-####3.6	语句
+### 3.6	语句
 	1.if语句
 	if (i > 25)
 	alert("Greater than 25."); // 单行语句
@@ -71,14 +72,14 @@
 =======
 =======
 	alert(num.toString(16));    // "a"	
-####Object类型
+#### Object类型
 	1.var o = new Object();
-###3.5操作符
-####一元操作符
+###  3.5操作符
+#### 一元操作符
 	***后置型递增递减在语句求值后再递增或递减
 	***前置型递增递减在语句求值前递增或递减
 	
 	一元加操作符对数值不产生影响；
 	一元减操作符用于表示负数。
 	 操作符111
-####啊啊啊
+#### 啊啊啊
