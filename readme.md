@@ -1,4 +1,6 @@
-﻿### 3.5
+﻿### 六种数据类型
+	String,Number,Boolean,Null,undefined,Object
+### 3.5
 #### 数值转换
 	1.number
 	var num1 = Number("xxx");
@@ -34,8 +36,21 @@
 	alert(num.toString(8));     // "12"
 	alert(num.toString(10));    // "10"
 	alert(num.toString(16));    // "a"
+	3、字符方法charAt()和charCodeAt()
+	var string="hello world"
+	alert(string.charAt(1));	 //e
+	alert(string.charCodeAt(1));	//101(e的字符编码)
+	4、字符串操作
+	var stringValue="hello "
+	var result=stringValue.concat("world");
+	alert (result); 	//hello world
+	拼接多个参数
+	var result=stringValue.concat("world","!");
+	alert (result);		//hello world!
+	
 
 	Object类型
+
 	1.var o = new Object();
 ### 3.5.4 乘性操作符
 ####	
@@ -68,7 +83,7 @@
 	{
 		alert(i);
 	}
-5.哈哈哈
+
 =======
 =======
 	alert(num.toString(16));    // "a"	
