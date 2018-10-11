@@ -37,3 +37,32 @@
 	null->0
 	5、undefined转换为数字
 	undefined->NaN
+#### 含有数字和字母的字符串
+	var a="123px";
+	a=parseInt(a); //123
+	var a="123.456px";
+	a=parseFloat(a);//123.456
+	====如果对非String使用parseInt()和parseFloat()	
+	会先转换为String然后在操作
+	var a=true;
+	a=parerInt(a);//NaN
+#### 其他的数值类型转换为布尔值
+	1、数字类型转换为布尔值
+	除了0和NaN返回false，其他返回true
+	2、字符串转换为布尔值
+	除了为空，其他都为true
+	3、null和undefined都会转换为false
+	4、object转换为true
+### 运算符
+#### 算数运算符
+	加法运算
+	1、对非Number值进行运算时，先将其转换为Number在进行计		算
+	2、任何数和NaN运算都得NaN
+	3、两个字符串相加，进行字符串拼接
+	4、任何值和字符串相加，先转换为字符串，在进行拼接
+	5、可以为任意的数据类型加一个空字符串""将其转换为		String类型
+	=====
+	任何值进行- * /运算时，都会转换为Number
+	可以通过-0，*1，/1将其他值转换为Number
+#### 一元运算符
+	可以对任意数据使用+，将其转换为Number
