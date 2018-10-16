@@ -135,7 +135,7 @@
 			}
 		}
 	}
-#### 质数练习
+#### 质数练习 10.16
 	var i;
 	var flag=1;
 	var num=prompt("输入一个数字：");
@@ -152,3 +152,38 @@
 #### break和continue
 	break结束本次循环
 	continue结束当前循环
+### 对象
+#### 自建对象
+	var obj=new Object();
+	obj.name="zhanghuan";	//添加属性
+	delete obj.name; //删除属性
+	==================
+    属性名:
+	使用[]操作属性更加灵活;
+	obj["123"]=789;
+	obj["456"]=891;
+	var a ="123";	//变量a可以灵活变化
+	console.log(obj[a]);
+    属性值：
+	属性值可以是其他对象
+	var obj2=new Object();
+	obj2.name="zhanghuan"
+	obj.test=obj2;
+	console.log(obj.test);
+	==================
+	in运算符---检查一个对象中是否有指定的属性
+	有则返回true，没有则返回false
+	console.log("test" in obj);	//true
+#### 宿主对象
+	目前来讲主要是浏览器提供的对象
+	BOM DOM 
+	比如：console.log() document.writer()
+#### 内建对象
+	ES标准中定义的对象，任何的ES都可以实现
+	比如：Math String Number Boolean Function Object
+### 基本数据类型和引用数据类型
+	基本数据类型的值在栈内存中存储，变量之间互不影响
+	引用数据类型的值在堆内存中存储，每个对象创建一个新的空间，栈内存中保存的是对象的地址
+	===
+	比较两个基本数据类型的数值时，比较的是数值
+	比较两个引用数据类型时，比较的是其地址，地址不同返回false
