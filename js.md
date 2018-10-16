@@ -106,4 +106,49 @@
 	在控制台输出Unicode编码对应的图形
 	console.log("\u2680");	/十六进制编码
 	在页面输出Unicode编码对应的图形
-	<h1 style="font-size: 100px;">&#9856;</h1>/十进制编码
+	<h1>&#9856;</h1>	/十进制编码
+### 相等运算符
+#### 相等
+	1、用"=="进行运算时，先将其转换为相同的类型在进行比较
+	cnosole.log(null==0);	/false
+	2、undefined衍生为null
+	console.log(undefined==null);/true
+	3、NaN不和任何值相等，用isNaN()判断一个值是否为NaN
+	4、全等(===) 不会进行强制类型转换，类型不同直接返回false
+### 条件运算符
+	var a=10;
+	var b=20;
+	var max=a>b?a:b;
+### 循环
+#### while循环 
+	do...while比while多执行一次
+#### for循环
+	水仙花数
+	var a,b,c;
+	var i=0;
+	for(a=0;a<10;a++){
+		for(b=0;b<10;b++){
+			for(c=0;c<10;c++){
+				if(a*a*a+b*b*b+c*c*c==a*100+b*10+c){
+					console.log(a+"+"+b+"+"+c+"="+(a*100+b*10+c));
+				}
+			}
+		}
+	}
+#### 质数练习
+	var i;
+	var flag=1;
+	var num=prompt("输入一个数字：");
+	for(i=2;i<num;i++){
+		if(num%i==0){
+			flag=2;
+		}
+	}
+	if(flag==1){
+		alert("是质数")
+	}else{
+		alert("不是质数");
+	}
+#### break和continue
+	break结束本次循环
+	continue结束当前循环
