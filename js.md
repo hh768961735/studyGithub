@@ -187,3 +187,25 @@
 	===
 	比较两个基本数据类型的数值时，比较的是数值
 	比较两个引用数据类型时，比较的是其地址，地址不同返回false
+###10.21
+### 对象字面量
+	var obj={};	//使用字面量创建对象
+	语法：var obj2={name:"zhangsan",
+			age:20,
+			sex:"male"};
+### 函数
+	1、var fun=new Function();	//构造函数
+	2、function fun(){
+		};
+	3、var fun=function(){		//匿名函数
+		};
+#### 函数参数
+	function sun(a,b){
+	consloe.log(a+b)
+		}		//解析器不会检查实参类型
+	sum(123,"hello");	//123hello
+#### 返回值
+	return 可以是任何值；
+#### 实参可以是任何值
+	
+	
