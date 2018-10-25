@@ -250,7 +250,7 @@
 	var obj1=creatPerson("张寰",18,"男");
 	obj1.sayName();
 	- 工厂模式创建的对象，使用的构造函数都是object，不方便区分多种对象，无法解决对象识别的问题
-### 构造函数
+### 构造函数 10.25
 	function Person(name,age,gender){
 		this.name=name;
 		this.age=age;
@@ -297,8 +297,22 @@
 	console.log(person1.__proto__.hasOwnProperty("hasOwnProperty"));
 	//hasOwnPorperty方法在原型对象的原型中
 	console.log(person1.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
-	console.log(person1.__proto__.__proto__.__proto__);
-//null
+	console.log(person1.__proto__.__proto__.__proto__);//null
 	==========
-	访问一个属性或者方法是，先在实例中寻找，有就使用，没有则在原型中找，有则使用，如果还没有就去原型的原型中寻找，知道找到object的原型，即没有原型，返null
+	访问一个属性或者方法是，先在实例中寻找，有就使用，没有则在原型中找，有则使用，如果还没有就去原型的原型中寻找，知道找到object的原型，即没有原型，返回undefined
+### toString()
+	在输出对象数，如果不希望输[object][object],里有添加一个toString()方法
+	function Person(name,age,gender){
+		this.name=name;
+		this.age=age;
+		this.gender=gender;
+	}
 	
+	
+	Person.prototype.toString=function(){
+		return this.name;
+	}
+	var per=new Person("张寰",21,"男");
+	var per2=new Person("张超",21,"男");
+	console.log(per); 
+	console.log(per2);
