@@ -249,6 +249,29 @@
 	}
 	var obj1=creatPerson("张寰",18,"男");
 	obj1.sayName();
-	
-
-	
+	- 工厂模式创建的对象，使用的构造函数都是object，不方便区分多种对象，无法解决对象识别的问题
+### 构造函数
+	function Person(name,age,gender){
+		this.name=name;
+		this.age=age;
+		this.gender=gender;
+		this.sayName=function(){
+			alert(this.name);
+		};
+	}
+	function Dog(name,age){
+		this.name=name;
+		this.age=age;
+		this.sayName=function(){
+			alert(this.age);
+		}
+	}
+	var per=new Person("张寰",21,"男");
+	var dog=new Dog("沈风",20);
+	//console.log(per.sayName());
+	//console.log(dog.sayName());
+==================
+	- 不会显式的创建对象
+	- 直接将属性赋值给this(新创建的对象)
+	- 没有返回值
+	- 
