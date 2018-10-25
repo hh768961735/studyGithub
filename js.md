@@ -270,8 +270,35 @@
 	var dog=new Dog("沈风",20);
 	//console.log(per.sayName());
 	//console.log(dog.sayName());
-==================
+	==================
 	- 不会显式的创建对象
 	- 直接将属性赋值给this(新创建的对象)
 	- 没有返回值
-	- 
+	- instanceof可以检查一个对象是否是一个类的实例
+### 原型对象
+	function Person(){	
+	}
+	Person.prototype.name="张寰";
+	Person.prototype.age=10;
+	Person.prototype.gender="男";
+	Person.prototype.sayName=function(){
+		console.log(this.name);
+	}
+	var person1=new Person();
+	person1.name="张超";
+	person1.age=15;
+	person1.sayName();	//张超
+	var person2=new Person();
+	person2.sayName();	//张寰
+	//用in检查对象中是否有某个属性是，无论实例中还是原型中有，都会返回true
+	console.log("name" in person1);
+	//hasOwnProperty检查实例还是原型中的属性
+	console.log(person1.hasOwnProperty("age"));
+	console.log(person1.__proto__.hasOwnProperty("hasOwnProperty"));
+	//hasOwnPorperty方法在原型对象的原型中
+	console.log(person1.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
+	console.log(person1.__proto__.__proto__.__proto__);
+//null
+	==========
+	访问一个属性或者方法是，先在实例中寻找，有就使用，没有则在原型中找，有则使用，如果还没有就去原型的原型中寻找，知道找到object的原型，即没有原型，返null
+	
