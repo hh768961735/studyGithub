@@ -316,3 +316,58 @@
 	var per2=new Person("张超",21,"男");
 	console.log(per); 
 	console.log(per2);
+### 垃圾回收10.26
+	var obj=new Object();
+	obj=null;	//将不再使用的对象设置为null，js会自动回收
+### 数组对象 10.30
+ 	var arr=new Array();
+	arr[0]=10;
+	arr[1]=11;
+	console.log(arr.length);	//2，length的值比索引大一	
+	arr.length=1;
+	console.log(arr);	//10 
+	arr.length=3;
+	console.log(arr);	//10,11,, length大于索引时会把多余的空出来
+	arr[arr.length]=12;
+	arr[arr.length]=13;	//向后依次添加元素
+#### 数组字面量
+	var arr=[1,2,3,4,5];	//一般使用字面量创建数组
+	var arr=new Array(1,2,3);
+	数组元素可以是任意数据类型
+	arr=["hello",123,null,undefined]
+	//对象
+	var obj={name:"张寰"};
+	arr[arr.length]=obj;
+	console.log(arr);	//1,2,3,[object Object]
+	//函数
+	arr=[function(){},function(){}];
+	console.log(arr);	//function (){},function (){}
+	//数组
+	arr=[[1,2,3],[4,,5,6]];
+#### 数组的方法
+	- push方法:
+	向数组最后添加元素
+	var arr=["张寰","张超","小笛"];
+	arr.push("蛇丸"); 	//push添加元素
+	console.log(arr);	//张寰,张超,小笛,蛇丸
+	var result=arr.push("蛇丸"); 
+	console.log(result);	//4  result返回更新后数组的长度
+	- pop方法:
+	删除数组的最后一个元素
+	var arr=["张寰","张超","小笛"];
+	arr.pop();
+	console.log(arr);	//张寰,张超
+	var result=arr.pop();
+	console.log(result);	//小笛 result返回删除的元素
+	- unshift方法:
+	向数组第一位添加元素
+	var arr=["张寰","张超","小笛"];
+	arr.unshift("蛇丸");
+	console.log(arr);	//蛇丸,张寰,张超,小笛
+	result返回值与push相同
+	- shift方法
+	删除数组的第一个元素
+	var arr=["张寰","张超","小笛"];
+	arr.shift();
+	console.log(arr);	//张超,小笛
+	result返回值是被删除的元素
