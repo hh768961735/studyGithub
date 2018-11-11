@@ -371,3 +371,38 @@
 	arr.shift();
 	console.log(arr);	//张超,小笛
 	result返回值是被删除的元素
+#### 数组遍历
+	function Person(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	
+	
+	Person.prototype.toString=function(){
+		return this.name+" "+this.age;
+	}
+	var per=new Person("zh",15);
+	var per1=new Person("zc",18);
+	var per2= new Person("hz",22);
+	var arr=[per,per1,per2];
+	function gentel(arr){
+		var newArr=[];
+		for(var i=0;i<arr.length;i++){
+			
+		if(arr[i].age>=18){
+			newArr.push(arr[i]);
+		}
+		} 
+		return newArr;
+	}
+	var result=gentel(arr);
+	console.log(result);
+#### forEach()
+	var arr=["zh","zc","hz"];
+	arr.forEach(function(value,index,obj){
+		console.log("value="+value);
+	});
+	- function由浏览器调用，称为回调函数
+	- 传递三个实参,
+	数组值，数组索引，数组
+	
