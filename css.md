@@ -78,3 +78,12 @@
 	所以可以同时使用overflow和zoom兼容所有浏览器
 #### 高度塌陷最终解决方案
 	clear:清楚其他浮动元素对当前元素的影响
+	- 在高度塌陷的父元素最后添加一个空白的div，添加clear可以解决这个问题
+	但是这种方式会添加多余的代码结构
+	==========
+	通过after伪类添加一个div
+	.box1:after{
+				content: "";
+				display: block;
+				clear: left;
+			}
