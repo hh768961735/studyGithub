@@ -91,7 +91,7 @@
 	var result=2&&1;	/result=1
 	====
 	var result=0&&1;	/result=0
-	var result=1&&NaN;	/result=1
+	var result=1&&NaN;	/result=NaN
 	3、与运算中如果第一值为true，则返回第二个值
 	如果第一个值为false，则返回第一个值，返回的均为原值，不是布尔值
 #### 或运算
