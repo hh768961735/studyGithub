@@ -1,5 +1,5 @@
 ###  3.toString()   3..toString()   3...toString() 的输出结果是什么
-####  分别为3，error，erroe
+	分别为3，error，erroe
 ### 数组去重
 	var arr = [1,2,3,44,55,1,3,44];
 	var i,t;
