@@ -64,4 +64,5 @@
 	  * static  默认值。没有定位，元素出现在正常的流中
   	  *（忽略 top, bottom, left, right z-index 声明）。
 	  * inherit 规定从父元素继承 position 属性的值。
+### 7、div水平垂直居中
 
