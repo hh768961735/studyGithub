@@ -65,4 +65,22 @@
   	  *（忽略 top, bottom, left, right z-index 声明）。
 	  * inherit 规定从父元素继承 position 属性的值。
 ### 7、div水平垂直居中
-
+			body,html{
+				margin: 0;
+				padding: 0;
+			}
+			.vh{
+				height: 200px;
+				width: 200px;
+				top: 50%;
+				left: 50%;
+				margin-left: -100px;
+				margin-top: -100px;
+				position: absolute;
+				background-color: color;
+			}	
+### 8、清除浮动的放法
+	1、父级div定义height
+	2、结尾处添加空的div标签 clear:both
+	3、父级div定义伪类：after和zoom
+	4、父级div定义 overflow:hidden
