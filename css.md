@@ -160,6 +160,7 @@
 				margin: 0;
 				padding: 0;
 			}
+		方法一：
 			.vh{
 				height: 200px;
 				width: 200px;
@@ -169,7 +170,27 @@
 				margin-top: -100px;
 				position: absolute;
 				background-color: color;
-			}	
+			}
+		方法二： .vh{
+          				background:red;
+            				position: absolute;
+            				width: 100px;
+            				height: 100px;
+            				left:50%;
+            				top:50%;
+            				transform: translate(-50%, -50%);
+        			}
+		方法三：.vh{
+            				width: 100px;
+            				height: 100px;
+            				background: red;
+           				position:absolute;
+            				left:0;
+            				top: 0;
+            				bottom: 0;
+            				right: 0;
+            				margin: auto;
+        			}	
 #### 8、清除浮动的放法
 	1、父级div定义height
 	2、结尾处添加空的div标签 clear:both
