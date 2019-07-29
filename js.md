@@ -1,6 +1,6 @@
 ### 10.10
 #### 六种数据类型
-	String,Number,Null,undefined,Boolean五中基本数据类型 		Object一种引用数据类型 
+	String,Number,Null,undefined,Boolean五中基本数据类型 Object一种引用数据类型 
 #### 转义字符 "\"
  	alert("hello world!");
 	\" 表示 "
@@ -331,6 +331,14 @@
 ### 垃圾回收10.26
 	var obj=new Object();
 	obj=null;	//将不再使用的对象设置为null，js会自动回收
+### DOM
+	通过id查找元素：
+		var x=document.getElementById("intro");
+	通过标签名查找 HTML 元素：
+		var x=document.getElementById("main");
+		var y=x.getElementsByTagName("p");
+### BOM
+	
 ### 数组对象 10.30
  	var arr=new Array();
 	arr[0]=10;
@@ -478,6 +486,23 @@
 #### Ajax
 ##### XMLHttpRequest
 	
+	var ajax = new XMLHttpRequest();
+		// 第二步： 设置状态监听函数
+		ajax.onreadystatechange = function() {
+			
+		// 第五步：在监听函数中，判断readyState=4 && status=200表示请求成功
+		if (ajax.readyState == 4 && ajax.status == 200) {
+			// 第六步： 使用responseText、responseXML接受响应数据，并使用原生JS操作DOM进行显示
+			console.log(ajax.responseText);
+			console.log(ajax.responseXML); // 返回不是XML，显示null
+			console.log(JSON.parse(ajax.responseText));
+			console.log(eval("(" + ajax.responseText + ")"));
+		}
+	}
+	// 第三步： open一个链接
+	ajax.open("GET", "h51701.json", false); //true异步请求，false同步
+
+	// 第四步： send一个请求。 可以发送对象和字符串，不需要传递数据发送null
 ### 面试题
 #### 3.toString()   3..toString()   3...toString() 的输出结果是什么
 	分别为3，error，erroe
