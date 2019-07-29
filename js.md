@@ -290,18 +290,31 @@
 	person1.sayName();	//张超
 	var person2=new Person();
 	person2.sayName();	//张寰
+
 	//用in检查对象中是否有某个属性是，无论实例中还是原型中有，都会返回true
 	console.log("name" in person1);
+
 	//hasOwnProperty检查实例还是原型中的属性
 	console.log(person1.hasOwnProperty("age"));
 	console.log(person1.__proto__.hasOwnProperty("hasOwnProperty"));
+
 	//hasOwnPorperty方法在原型对象的原型中
 	console.log(person1.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
 	console.log(person1.__proto__.__proto__.__proto__);//null
 	==========
 	访问一个属性或者方法是，先在实例中寻找，有就使用，没有则在原型中找，有则使用，如果还没有就去原型的原型中寻找，知道找到object的原型，即没有原型，返回undefined
+### Object.keys()方法
+	function Person() {}
+	Person.prototype.name = 'aa';
+	Person.prototype.age = 10;
+	Person.prototype.gender = 'male';
+	Person.prototype.sayName = function() {
+		console.log('aaa');
+	}
+	var keys = Object.keys(Person.prototype);
+	console.log(typeof keys); // 输出一个数组对象
 ### toString()
-	在输出对象数，如果不希望输[object][object],里有添加一个toString()方法
+	在输出对象时，如果不希望输[object][object],里有添加一个toString()方法
 	function Person(name,age,gender){
 		this.name=name;
 		this.age=age;
@@ -405,6 +418,30 @@
 	- function由浏览器调用，称为回调函数
 	- 传递三个实参,
 	数组值，数组索引，数组
+#### 数组判断
+	var arr0 = {
+		name: 'zhanghuan',
+		age: '20'
+	}
+		
+		var arr = [1,2,3];
+		console.log(arr0);
+		//console.log(arr0.__proto__.constructor);
+		//判断是否是一个数组
+		1、//console.log(Array.isArray(arr0));
+		2、//console.log(arr0 instanceof Array);
+		3、//console.log(Array.prototype.isPrototypeOf(arr));
+		4、//console.log(arr.constructor);
+	 5、function isArrayFour(arr) {
+           		if(typeof(arr) === "object") {
+               	 		if(arr.concat) {
+                   	 	return 'This is Array' 
+              		  	}else {
+                    		return 'This not Array' 
+                		}
+            		}
+        	}
+       		console.log(typeof(obj))
 ### 面试题
 #### 3.toString()   3..toString()   3...toString() 的输出结果是什么
 	分别为3，error，erroe
