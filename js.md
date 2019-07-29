@@ -187,7 +187,6 @@
 	===
 	比较两个基本数据类型的数值时，比较的是数值
 	比较两个引用数据类型时，比较的是其地址，地址不同返回false
-###10.21
 ### 对象字面量
 	var obj={};	//使用字面量创建对象
 	语法：var obj2={name:"zhangsan",
@@ -247,7 +246,7 @@
 		};
 		return obj;
 	}
-	var obj1=creatPerson("张寰",18,"男");
+	var obj1=creatPerson("Bob",18,"male");
 	obj1.sayName();
 	- 工厂模式创建的对象，使用的构造函数都是object，不方便区分多种对象，无法解决对象识别的问题
 ### 构造函数 10.25
@@ -266,8 +265,8 @@
 			alert(this.age);
 		}
 	}
-	var per=new Person("张寰",21,"男");
-	var dog=new Dog("沈风",20);
+	var per=new Person("Bob",21,"male");
+	var dog=new Dog("John",20);
 	//console.log(per.sayName());
 	//console.log(dog.sayName());
 	==================
@@ -278,18 +277,18 @@
 ### 原型对象
 	function Person(){	
 	}
-	Person.prototype.name="张寰";
+	Person.prototype.name="Bob";
 	Person.prototype.age=10;
-	Person.prototype.gender="男";
+	Person.prototype.gender="male";
 	Person.prototype.sayName=function(){
 		console.log(this.name);
 	}
 	var person1=new Person();
-	person1.name="张超";
+	person1.name="John";
 	person1.age=15;
-	person1.sayName();	//张超
+	person1.sayName();	// John
 	var person2=new Person();
-	person2.sayName();	//张寰
+	person2.sayName();	// Bob
 
 	//用in检查对象中是否有某个属性是，无论实例中还是原型中有，都会返回true
 	console.log("name" in person1);
@@ -325,8 +324,8 @@
 	Person.prototype.toString=function(){
 		return this.name;
 	}
-	var per=new Person("张寰",21,"男");
-	var per2=new Person("张超",21,"男");
+	var per=new Person("Bob",21,"male");
+	var per2=new Person("Amy",21,"fmale");
 	console.log(per); 
 	console.log(per2);
 ### 垃圾回收10.26
@@ -349,7 +348,7 @@
 	数组元素可以是任意数据类型
 	arr=["hello",123,null,undefined]
 	//对象
-	var obj={name:"张寰"};
+	var obj={name:"Bob"};
 	arr[arr.length]=obj;
 	console.log(arr);	//1,2,3,[object Object]
 	//函数
@@ -360,29 +359,29 @@
 #### 数组的方法
 	- push方法:
 	向数组最后添加元素
-	var arr=["张寰","张超","小笛"];
-	arr.push("蛇丸"); 	//push添加元素
-	console.log(arr);	//张寰,张超,小笛,蛇丸
-	var result=arr.push("蛇丸"); 
+	var arr=["Bob","Amy","John"];
+	arr.push("Jack"); 	//push添加元素
+	console.log(arr);	//
+	var result=arr.push("Jack"); 
 	console.log(result);	//4  result返回更新后数组的长度
 	- pop方法:
 	删除数组的最后一个元素
-	var arr=["张寰","张超","小笛"];
+	var arr=["Bob","Amy","John"];
 	arr.pop();
-	console.log(arr);	//张寰,张超
+	console.log(arr);	// Bob，Amy
 	var result=arr.pop();
-	console.log(result);	//小笛 result返回删除的元素
+	console.log(result);	//John result返回删除的元素
 	- unshift方法:
 	向数组第一位添加元素
-	var arr=["张寰","张超","小笛"];
-	arr.unshift("蛇丸");
-	console.log(arr);	//蛇丸,张寰,张超,小笛
+	var arr=["Bob","Amy","John"];
+	arr.unshift("Jack");
+	console.log(arr);	
 	result返回值与push相同
 	- shift方法
 	删除数组的第一个元素
-	var arr=["张寰","张超","小笛"];
+	var arr=["Bob","Amy","John"];
 	arr.shift();
-	console.log(arr);	//张超,小笛
+	console.log(arr);	//
 	result返回值是被删除的元素
 #### 数组遍历
 	function Person(name,age){
@@ -442,6 +441,43 @@
             		}
         	}
        		console.log(typeof(obj))
+#### JSON
+	JSON字符串与JS字符创最大的区别在于，JSON字符串必须用双引号
+##### 对象
+	对象字面量：
+		var person = {
+			name: "zhanghuan",
+			age: 22	
+		}
+	标准JSON格式：
+		var object = {
+			"name": "zhanghuan",
+			"age": "20"	
+		}
+	JSON对象的属性值必须加双引号
+##### 数组
+	var p = [
+		{"name": "zhanghuan"},
+		{"age": "20"},
+		{"gender": "male"},
+		{"address": "朔州"}
+	]
+##### JSON序列化
+	JSON.stringify( ); //JS对象序列化为JSON字符串
+	JSON.parse(jsonText); // JSON字符串转换为JS对象
+	
+	过滤结果
+	var person = {
+		"name": "zhanghuan",
+		"age": 20,
+		"gender": "male",
+		"address": "朔州"
+		}
+	var b = JSON.stringify(person,["name","age"]);
+	console.log(b);
+#### Ajax
+##### XMLHttpRequest
+	
 ### 面试题
 #### 3.toString()   3..toString()   3...toString() 的输出结果是什么
 	分别为3，error，erroe
