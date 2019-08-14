@@ -229,6 +229,8 @@
 	==========
 	- 在函数作用域中，没有用var声明的变量会变成全局变量
 	- 定义一个形参相当于在函数作用域中声明一个变量
+### 递归
+	
 #### debug
 	断点调试代码
 ### this对象
@@ -274,34 +276,6 @@
 	- 直接将属性赋值给this(新创建的对象)
 	- 没有返回值
 	- instanceof可以检查一个对象是否是一个类的实例
-### 原型对象
-	function Person(){	
-	}
-	Person.prototype.name="Bob";
-	Person.prototype.age=10;
-	Person.prototype.gender="male";
-	Person.prototype.sayName=function(){
-		console.log(this.name);
-	}
-	var person1=new Person();
-	person1.name="John";
-	person1.age=15;
-	person1.sayName();	// John
-	var person2=new Person();
-	person2.sayName();	// Bob
-
-	//用in检查对象中是否有某个属性是，无论实例中还是原型中有，都会返回true
-	console.log("name" in person1);
-
-	//hasOwnProperty检查实例还是原型中的属性
-	console.log(person1.hasOwnProperty("age"));
-	console.log(person1.__proto__.hasOwnProperty("hasOwnProperty"));
-
-	//hasOwnPorperty方法在原型对象的原型中
-	console.log(person1.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
-	console.log(person1.__proto__.__proto__.__proto__);//null
-	==========
-	访问一个属性或者方法是，先在实例中寻找，有就使用，没有则在原型中找，有则使用，如果还没有就去原型的原型中寻找，知道找到object的原型，即没有原型，返回undefined
 ### Object.keys()方法
 	function Person() {}
 	Person.prototype.name = 'aa';
@@ -483,6 +457,36 @@
 		}
 	var b = JSON.stringify(person,["name","age"]);
 	console.log(b);
+### js高级
+#### 原型对象
+	function Person(){	
+	}
+	Person.prototype.name="Bob";
+	Person.prototype.age=10;
+	Person.prototype.gender="male";
+	Person.prototype.sayName=function(){
+		console.log(this.name);
+	}
+	var person1=new Person();
+	person1.name="John";
+	person1.age=15;
+	person1.sayName();	// John
+	var person2=new Person();
+	person2.sayName();	// Bob
+	console.log(person1.__proto__);//显示原型
+	console.log(person1.prototype);//隐式原型
+	//用in检查对象中是否有某个属性是，无论实例中还是原型中有，都会返回true
+	console.log("name" in person1);
+
+	//hasOwnProperty检查实例还是原型中的属性
+	console.log(person1.hasOwnProperty("age"));
+	console.log(person1.__proto__.hasOwnProperty("hasOwnProperty"));
+
+	//hasOwnPorperty方法在原型对象的原型中
+	console.log(person1.__proto__.__proto__.hasOwnProperty("hasOwnProperty"));
+	console.log(person1.__proto__.__proto__.__proto__);//null
+	==========
+	访问一个属性或者方法是，先在实例中寻找，有就使用，没有则在原型中找，有则使用，如果还没有就去原型的原型中寻找，知道找到object的原型，即没有原型，返回undefined
 #### Ajax
 ##### XMLHttpRequest
 	
@@ -503,6 +507,63 @@
 	ajax.open("GET", "h51701.json", false); //true异步请求，false同步
 
 	// 第四步： send一个请求。 可以发送对象和字符串，不需要传递数据发送null
+##### jQuery
+	$.ajax({
+		url: url,
+		method: "GET",
+		contentType:  "application/x-www-form-urlencoded",
+		context: Object,
+		async: true/false,
+		dataType: "JSON",
+		data:{
+		},
+		success: function (data) {
+			},
+			error{
+				
+			}	  
+	})
+#### 回调函数
+	//定义了但是没有调用也可以执
+	//DOM对象
+	document.getElementById("app").onclick = function(){
+	 	alert(this.innerHTML);
+	 };
+	 //定时器
+	 setTimeout(function(){
+	 	alert(1);
+	 },2000)
+	 //匿名函数自调用 IIFES
+	 (function (){
+	 	var a = 1;
+	 	function test(){
+	 		console.log(++a); 
+	 	}
+	 	window.$ = function(){
+	 		return {
+	 			test: test
+	 		}
+	 	}
+	 })()
+	 $().test();
+#### this
+		function Person(person){
+		console.log(this);
+		this.person = person;
+		this.getPerson = function(){
+			console.log(this); //Person
+			return this.person;
+		};
+		this.setPerson = function(){
+			console.log(this); //obj 
+			return this.person;
+		}
+	}
+	Person("hh"); //window.Person
+	var p = new Person();
+	p.getPerson("hh");
+	var obj = {};
+	p.setPerson.call(obj,"jj");
 ### 面试题
 #### 3.toString()   3..toString()   3...toString() 的输出结果是什么
 	分别为3，error，erroe
