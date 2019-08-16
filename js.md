@@ -488,7 +488,7 @@
 	==========
 	访问一个属性或者方法是，先在实例中寻找，有就使用，没有则在原型中找，有则使用，如果还没有就去原型的原型中寻找，知道找到object的原型，即没有原型，返回undefined
 #### 原型链
-	![原型链](https://github.com/hh768961735/h5Management/blob/master/img/prototype.png)
+	![原型链](https://github.com/hh768961735/h5Management/blob/master/img/prototype.png "url")
 	<p><img src="https://github.com/hh768961735/h5Management/blob/master/img/prototype.png" alt="原型链" title="" /></p>
 #### Ajax
 ##### XMLHttpRequest
