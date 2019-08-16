@@ -473,8 +473,8 @@
 	person1.sayName();	// John
 	var person2=new Person();
 	person2.sayName();	// Bob
-	console.log(person1.__proto__);//显示原型
-	console.log(person1.prototype);//隐式原型
+	console.log(person1.__proto__);//隐式原型
+	console.log(person1.prototype);//显式原型
 	//用in检查对象中是否有某个属性是，无论实例中还是原型中有，都会返回true
 	console.log("name" in person1);
 
@@ -487,6 +487,8 @@
 	console.log(person1.__proto__.__proto__.__proto__);//null
 	==========
 	访问一个属性或者方法是，先在实例中寻找，有就使用，没有则在原型中找，有则使用，如果还没有就去原型的原型中寻找，知道找到object的原型，即没有原型，返回undefined
+#### 原型链
+	![原型链](https://github.com/hh768961735/h5Management/blob/master/img/prototype.png)
 #### Ajax
 ##### XMLHttpRequest
 	
@@ -524,7 +526,7 @@
 			}	  
 	})
 #### 回调函数
-	//定义了但是没有调用也可以执
+	//定义了但是没有调用也可以执行
 	//DOM对象
 	document.getElementById("app").onclick = function(){
 	 	alert(this.innerHTML);
@@ -547,6 +549,7 @@
 	 })()
 	 $().test();
 #### this
+		//this指向当前调用的对象
 		function Person(person){
 		console.log(this);
 		this.person = person;
@@ -564,6 +567,18 @@
 	p.getPerson("hh");
 	var obj = {};
 	p.setPerson.call(obj,"jj");
+#### that
+		// 把当前的this对象赋值给that，则即使this改变，that依然指向之前的那个对象
+		function s(){
+			this.a = 1;
+			console.log(a);
+		}
+		function b(){
+			var that = this;
+			console.log(that.a);
+		}
+		s();
+		b();	
 ### 面试题
 #### 3.toString()   3..toString()   3...toString() 的输出结果是什么
 	分别为3，error，erroe
