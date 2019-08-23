@@ -15,7 +15,7 @@
 	相同点：都存储在客户端
 	不同点：
 	1、cookie大小不超过4k
-		sessionStorage和localStorage能达到5M
+		sessionStorage和localStorage能达到5M或者更大
 	2、有效时间
 		localStorage存储持久数据，关闭浏览器后数据依然存在
 		sessionStorage在关闭浏览器后数据自动删除
