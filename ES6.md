@@ -8,10 +8,12 @@
    			console.log(freezing);
   		}
 	}
-
-	运行getClothing(false),控制台输出undefined，因为变量声明提前，
+	getClothing(false);  
+	输出undefine,var声明的变量被声明提前
 	freezing被声明，但是没有赋值，所以输出undefined,这是var的缺点。
-
+	// 由const和let声明的变量不会声明提前,直接报错
+	// let可以不初始化,声明之后直接赋值即可,不能再次声明(同一作用域下)
+	// const必须初始化,同一作用域内不可重新声明且赋值
 	function getClothing(isCold) {
  		 if (isCold) {
     			const freezing = 'Grab a jacket!';
