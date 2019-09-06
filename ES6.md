@@ -93,6 +93,4 @@
 	console.log(Point.distance(p1, p2));
 	haha
 	Creating a new branch is quick & simple.
-
-
-	
+	haha
