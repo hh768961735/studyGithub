@@ -89,8 +89,15 @@
 	
 	const p1 = new Point(5, 5);
 	const p2 = new Point(10, 10);
-	
 	console.log(Point.distance(p1, p2));
-	haha
-	Creating a new branch is quick & simple.
-	haha
+#### 原型和静态方法包装
+	class Animal{
+		speak(){
+			return this;
+		}
+		static eat(){
+			return this;
+		}
+	}
+	let obj = new Animal();
+	obj.speak();
