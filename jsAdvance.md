@@ -153,3 +153,4 @@
 		    console.log( this.a );
 		}
 		fn1(); //ReferenceError
+		从执行结果来看，this并没有引用fu1的词法作用域，

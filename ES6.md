@@ -26,6 +26,8 @@
 	没有被声明，const和let不会被声明提前。
 	+ let声明变量可以重新赋值，但是不能再同一作用域内重新声明(不用声明，直接赋值)
 	+ const声明的变量必须初始化，不能再同一作用域内声明且重新赋值
+### Symbol
+	
 ### class
 #### 定义类
 	class Rectangle {
@@ -34,7 +36,7 @@
 			this.width = width;
 		}
 	}
-#### 声明提升
+#### 声明提前
 	类声明不会提前，需要先声明类，在进行实例化操作。
 	let p = new Rectangle(); 
 	// ReferenceError
