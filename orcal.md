@@ -1,1 +1,0 @@
-### orcal group by£¬nvl£¬case when£¬decode, cast as number
