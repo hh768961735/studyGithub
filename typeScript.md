@@ -1,10 +1,4 @@
-### 元组
-	元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。 
-	比如，你可以定义一对值分别为 string和number类型的元组。
-	let x: [string, number];
-	x = ['hello',10];
-	console.log(x[0].substr(1)); //ok
-	console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
+## 基础类型
 ### 布尔值
 	let isDone: boolean = false;
 ### 数字
@@ -15,7 +9,14 @@
 ### 字符串
 	let name: string = "bob";
 	name = "smith";
-#### 模板字符串
+### 元组
+	元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。 
+	比如，你可以定义一对值分别为 string和number类型的元组。
+	let x: [string, number];
+	x = ['hello',10];
+	console.log(x[0].substr(1)); //ok
+	console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
+### 模板字符串
 	反引号 ` `
 	let name: string = `Gene`;
 	let age: number = 37;
@@ -25,6 +26,8 @@
 	let arr: array[] = [1,2,3];
 	let list: Array<number> = [1, 2, 3];
 ### 枚举
+	enum类型是对JavaScript标准数据类型的一个补充。 像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字。
+	
 	enum Color {Red, Green, Blue}
 	let color = Color.Green;
 	
@@ -39,6 +42,11 @@
 	let notSure: any = 4;
 	notSure = "maybe a string instead";
 	notSure = false; // okay, definitely a boolean
+	当你只知道一部分数据的类型时，any类型也是有用的。 比如，你有一个数组，它包含了不同的类型的数据：
+	
+	let list: any[] = [1, true, "free"];
+	
+	list[1] = 100;
 ### Void
 	当一个函数没有返回值时，你通常会见到其返回值类型是 void
 	只能赋值undefined和null
