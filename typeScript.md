@@ -88,20 +88,45 @@
 	
 ### let 声明
 #### 块作用域
-		当用let声明一个变量，它使用的是词法作用域或块作用域。不同于使用 var声明的变量那样可以在包含它们的函
-		数外访问，块作用域变量在包含它们的块或for循环之外是不能访问的。
-		
-		function f(input: boolean) {
-		    let a = 100;
-		
-		    if (input) {
-		        // Still okay to reference 'a'
-		        let b = a + 1;
-		        return b;
-		    }
-		
-		    // Error: 'b' doesn't exist here
-		    return b;
-		}
-		
-		这里我们定义了2个变量a和b。a的作用域是f函数体内，而b的作用域是if语句块里。
+	 当用let声明一个变量，它使用的是词法作用域或块作用域。不同于使用 var声明的变量那样可以在包含它们的函
+	 数外访问，块作用域变量在包含它们的块或for循环之外是不能访问的。
+	 
+	 function f(input: boolean) {
+	     let a = 100;
+	
+	     if (input) {
+	         // Still okay to reference 'a'
+	         let b = a + 1;
+	         return b;
+	     }
+	 
+	     // Error: 'b' doesn't exist here
+	     return b;
+	 }
+	 
+	 这里我们定义了2个变量a和b。a的作用域是f函数体内，而b的作用域是if语句块里。
+### const声明
+	const 声明是声明变量的另一种方式。
+
+	它们与let声明相似，但是就像它的名字所表达的，它们被赋值后不能再改变。 
+	换句话说，它们拥有与 let相同的作用域规则，但是不能对它们重新赋值。
+	
+	const numLivesForCat = 9;
+	const kitty = {
+	    name: "Aurora",
+	    numLives: numLivesForCat,
+	}
+	
+	// Error
+	kitty = {
+	    name: "Danielle",
+	    numLives: numLivesForCat
+	};
+	
+	// all "okay"
+	kitty.name = "Rory";
+	kitty.name = "Kitty";
+	kitty.name = "Cat";
+	kitty.numLives--;
+	除非你使用特殊的方法去避免，实际上const变量的内部状态是可修改的。 
+	幸运的是，TypeScript允许你将对象的成员设置成只读的。
