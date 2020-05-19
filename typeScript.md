@@ -3,19 +3,12 @@
 	let isDone: boolean = false;
 ### 数字
 	let decLiteral: number = 6;
-	let hexLiteral: number = 0xf00d;
-	let binaryLiteral: number = 0b1010;
-	let octalLiteral: number = 0o744;
+	let hexLiteral: number = 0xf00d; //十六进制
+	let binaryLiteral: number = 0b1010; //二进制
+	let octalLiteral: number = 0o744; //八进制
 ### 字符串
 	let name: string = "bob";
 	name = "smith";
-### 元组
-	元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。 
-	比如，你可以定义一对值分别为 string和number类型的元组。
-	let x: [string, number];
-	x = ['hello',10];
-	console.log(x[0].substr(1)); //ok
-	console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
 ### 模板字符串
 	反引号 ` `
 	let name: string = `Gene`;
@@ -24,12 +17,20 @@
 	I'll be ${ age + 1 } years old next month.`;
 ### 数组
 	let arr: array[] = [1,2,3];
+	数组泛型，Array<元素类型>：
 	let list: Array<number> = [1, 2, 3];
+### 元组
+	元组类型允许表示一个已知元素数量和类型的数组，各元素的类型不必相同。 
+	比如，你可以定义一对值分别为 string和number类型的元组。
+	let x: [string, number];
+	x = ['hello',10];
+	console.log(x[0].substr(1)); //ok
+	console.log(x[1].substr(1)); // Error, 'number' does not have 'substr'
 ### 枚举
 	enum类型是对JavaScript标准数据类型的一个补充。 像C#等其它语言一样，使用枚举类型可以为一组数值赋予友好的名字。
 	
 	enum Color {Red, Green, Blue}
-	let color = Color.Green;
+	let c: Color = Color.Green;
 	
 	enum Color {Red = 1, Green = 2, Blue = 3}
 	let c: Color = Color.Green;
@@ -77,4 +78,30 @@
 	}
 ### null和undefined
 	默认情况下null和undefined是所有类型的子类型。 就是说你可以把 null和undefined赋值给number类型的变量。
+## 变量声明
+### var 声明
+	一直以来我们都是通过var关键字定义JavaScript变量。
+
+	for (var i = 0; i < 10; i++) {
+		setTimeout(function() { console.log(i); }, 100 * i);
+	}
 	
+### let 声明
+#### 块作用域
+		当用let声明一个变量，它使用的是词法作用域或块作用域。不同于使用 var声明的变量那样可以在包含它们的函
+		数外访问，块作用域变量在包含它们的块或for循环之外是不能访问的。
+		
+		function f(input: boolean) {
+		    let a = 100;
+		
+		    if (input) {
+		        // Still okay to reference 'a'
+		        let b = a + 1;
+		        return b;
+		    }
+		
+		    // Error: 'b' doesn't exist here
+		    return b;
+		}
+		
+		这里我们定义了2个变量a和b。a的作用域是f函数体内，而b的作用域是if语句块里。
