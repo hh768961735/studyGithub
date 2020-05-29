@@ -128,5 +128,5 @@
 	kitty.name = "Kitty";
 	kitty.name = "Cat";
 	kitty.numLives--;
+	
 	除非你使用特殊的方法去避免，实际上const变量的内部状态是可修改的。 
-	幸运的是，TypeScript允许你将对象的成员设置成只读的。
