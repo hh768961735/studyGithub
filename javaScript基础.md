@@ -229,10 +229,6 @@
 	==========
 	- 在函数作用域中，没有用var声明的变量会变成全局变量
 	- 定义一个形参相当于在函数作用域中声明一个变量
-### 递归
-	
-#### debug
-	断点调试代码
 ### this对象
 	- 函数调用方式不同，this指向不同的对象
 	- 以函数的方式调用，this指向window
@@ -305,14 +301,6 @@
 ### 垃圾回收10.26
 	var obj=new Object();
 	obj=null;	//将不再使用的对象设置为null，js会自动回收
-### DOM
-	通过id查找元素：
-		var x=document.getElementById("intro");
-	通过标签名查找 HTML 元素：
-		var x=document.getElementById("main");
-		var y=x.getElementsByTagName("p");
-### BOM
-	
 ### 数组对象 10.30
  	var arr=new Array();
 	arr[0]=10;
@@ -457,18 +445,5 @@
 		}
 	var b = JSON.stringify(person,["name","age"]);
 	console.log(b);
-### 面试题
-#### 3.toString()   3..toString()   3...toString() 的输出结果是什么
-	分别为3，error，erroe
-#### 数组去重
-	var arr = [1,2,3,44,55,1,3,44];
-	var i,t;
-	var newArr = [];
-	for(i=0;i<arr.length;i++){
-		if(newArr.indexOf(arr[i])=-1){
-			newArr.push(arr[i]);
-		}
-	}
-	console.log(newArr);
 
 	
