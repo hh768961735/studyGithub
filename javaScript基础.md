@@ -152,6 +152,45 @@
 #### break和continue
 	break结束本次循环
 	continue结束当前循环
+### 方法
+#### 在一个对象中绑定函数，称为这个对象的方法。
+	var xiaoming = {
+	    name: '小明',
+	    birth: 1990
+	};
+	我们给xiaoming绑定一个函数
+	var xiaoming = {
+	    name: '小明',
+	    birth: 1990,
+	    age: function () {
+	        var y = new Date().getFullYear();
+	        return y - this.birth;
+	    }
+	};
+	
+	xiaoming.age; // function xiaoming.age()
+	xiaoming.age(); // 今年调用是25,明年调用就变成26了
+	
+	this关键字
+	在一个方法内部，this是一个特殊变量，它始终指向当前对象，也就是xiaoming这个变量。
+	所以，this.birth可以拿到xiaoming的birth属性。
+	
+	function getAge() {
+	    var y = new Date().getFullYear();
+	    return y - this.birth;
+	}
+	
+	var xiaoming = {
+	    name: '小明',
+	    birth: 1990,
+	    age: getAge
+	};
+	
+	xiaoming.age(); // 25, 正常结果
+	getAge(); // NaN
+	
+	如果以对象的方法形式调用，比如xiaoming.age()，该函数的this指向被调用的对象，也就是xiaoming，这是符合我们预期的。
+	如果单独调用函数，比如getAge()，此时，该函数的this指向全局对象，也就是window。
 ### 对象
 #### 自建对象
 	var obj=new Object();
@@ -229,10 +268,6 @@
 	==========
 	- 在函数作用域中，没有用var声明的变量会变成全局变量
 	- 定义一个形参相当于在函数作用域中声明一个变量
-### 递归
-	
-#### debug
-	断点调试代码
 ### this对象
 	- 函数调用方式不同，this指向不同的对象
 	- 以函数的方式调用，this指向window
@@ -305,14 +340,6 @@
 ### 垃圾回收10.26
 	var obj=new Object();
 	obj=null;	//将不再使用的对象设置为null，js会自动回收
-### DOM
-	通过id查找元素：
-		var x=document.getElementById("intro");
-	通过标签名查找 HTML 元素：
-		var x=document.getElementById("main");
-		var y=x.getElementsByTagName("p");
-### BOM
-	
 ### 数组对象 10.30
  	var arr=new Array();
 	arr[0]=10;
@@ -365,6 +392,16 @@
 	arr.shift();
 	console.log(arr);	//
 	result返回值是被删除的元素
+#### 解构赋值
+	传统写法:
+	var array = ['hello', 'JavaScript', 'ES6'];
+	var x = array[0];
+	var y = array[1];
+	var z = array[2];
+	ES6:
+	'use strict';
+	// 如果浏览器支持解构赋值就不会报错:
+	var [x, y, z] = ['hello', 'JavaScript', 'ES6'];
 #### 数组遍历
 	function Person(name,age){
 		this.name=name;
@@ -453,22 +490,9 @@
 		"name": "zhanghuan",
 		"age": 20,
 		"gender": "male",
-		"address": "朔州"
+		"address": "xian"
 		}
 	var b = JSON.stringify(person,["name","age"]);
 	console.log(b);
-### 面试题
-#### 3.toString()   3..toString()   3...toString() 的输出结果是什么
-	分别为3，error，erroe
-#### 数组去重
-	var arr = [1,2,3,44,55,1,3,44];
-	var i,t;
-	var newArr = [];
-	for(i=0;i<arr.length;i++){
-		if(newArr.indexOf(arr[i])=-1){
-			newArr.push(arr[i]);
-		}
-	}
-	console.log(newArr);
 
 	
