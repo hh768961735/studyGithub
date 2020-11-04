@@ -8,6 +8,7 @@
    			console.log(freezing);
   		}
 	}
+	1234
 	getClothing(false);  
 	输出undefine,var声明的变量被声明提前
 	freezing被声明，但是没有赋值，所以输出undefined,这是var的缺点。
