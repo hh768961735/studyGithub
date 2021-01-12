@@ -2,7 +2,7 @@
 #### 七种数据类型
 	String,Number,Null,undefined,Boolean,Symbol(ES6引入)六种基本数据类型 Object一种引用数据类型 
 #### 转义字符 "\"
- 	alert("hello world!");
+ 	+ alert("hello world!");
 	\" 表示 "
 	\n 换行
 	\t 制表符
