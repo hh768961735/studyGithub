@@ -228,4 +228,193 @@
         }
         person1.fullName.call(person2); // 返回 "John Doe"
 
+#### 函数中的prototype 2021/01/21
+
+##### 原型（对象属性）
+        - Javascript规定，每一个函数都有一个prototype对象属性，指向另一个对象（原型链上面的）。
+
+        - prototype(对象属性)的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变(公用)的属性和方法，直接定义在prototype对象属性上。
+
+        - prototype就是调用构造函数所创建的那个实例对象的原型（proto）。
+
+        - prototype可以让所有对象实例共享它所包含的属性和方法。也就是说，不必在构造函数中定义对象信息，而是可以直接将这些信息添加到原型中。
+
+##### 原型链 （JS原型与原型链继承）
+        - 实例对象与原型之间的连接，叫做原型链。proto( 隐式连接 )
+
+        - JS在创建对象的时候，都有一个叫做proto的内置属性，用于指向创建它的函数对象的原型对象prototype。
+
+        - 内部原型(proto)和构造器的原型（prototype）
+        - 每个对象都有一个proto属性,原型链上的对象正是依靠这个属性连结在一起
+        - 作为一个对象，当你访问其中的一个属性或方法的时候，如果这个对象中没有这个方法或属性，那么Javascript引擎将会访问这个对象的proto属性所指向上一个对象，
+        并在那个对象中查找指定的方法或属性，如果不能找到，那就会继续通过那个对象的proto属性指向的对象进行向上查找，直到这个链表结束。
+
+        - 每一个函数都有一个原型属性prototype(对象属性)，里面放置的是共有、公有的属性或者方法。(一般情况属性是私有的)。注意，只有函数才有prototyoe属性，
+
+            function Person() {
+       
+            }
+            var p = new Person()
+            console.log(Person.prototype); // Object{} 
+            console.log(p.prototype); //undefined
+			
+##### 浅谈constructor 2021/01/22
+
+        - 在 Javascript 语言中，constructor 属性是专门为 function 而设计的，它存在于每一个 function 的prototype 属性中。这个 constructor 保存了指向 function 的一个引用。
+            function Person() {
+       
+            }
+            var p = new Person()
+            console.log(Person.prototype); // Object{} 
+            console.log(p.prototype); // undifined
+            console.log(p.constructor); //function Person(){}    
+            此处的p是通过 Person函数构造出来的，所以p的constructor属性指向Person
+            console.log(Person.constructor); //function Function(){}
+            之前提过，每个函数其实是通过new Function（）构造的
+            console.log({}.constructor); // function Object(){}
+            每个对象都是通过new Object（）构造的
+            console.log(Object.constructor); // function Function() {}
+            Object也是一个函数，它是Function（）构造的
+            console.log([].constructor);  //function Array(){}
+
+                function Person(name,age){
+                    this.name = name;
+                    this.age = age;
+                    this.sayHello = function(){
+                        console.log(this.name + "say hello");
+                    }
+                }
+                var girl = new Person("bella",23);
+                var boy = new Person("alex",23);
+                console.log(girl.name);  //bella
+                console.log(boy.name);   //alex
+                console.log(girl.sayHello === boy.sayHello);  //false
+
+                    function Person(name,age){
+                        this.name = name;
+                        this.age = age;
+                        
+                    }
+                    Person.prototype.sayHello=function(){
+                        console.log(this.name + "say hello");
+                    }
+                    var girl = new Person("bella",23);
+                    var boy = new Person("alex",23);
+                    console.log(girl.name);  //bella
+                    console.log(boy.name);   //alex
+                    console.log(girl.sayHello === boy.sayHello);  //true          
+
+##### JS 在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做 __proto__ 的内置属性，用于指向创建它的构造函数的原型对象。
+
+        -   var obj = []
+            console.log(obj.__proto__ === Array.prototype)//true
+
+#### 显示原型与隐式原型
+
+        在js中万物皆对象，方法(Function)是对象，方法的原型（Function.prototype）是对象，对象具有属性（__proto__）称为隐式原型，对象的隐式原型指向构造该对象的构造函数的显式原型。
+
+        方法(Function)是一个特殊的对象，除了和其他对象一样具有__proto__属性以外，它还有一个自己特有的原型属性(prototype)，这个属性是一个指针，指向原型对象。原型对象也有一个属性叫constructor，这个属性包含一个指针，指向原构造函数。
+
+        注意：通过Function.prototype.bind方法构造出来的函数没有prototype属性。
+
+        注意：Object.prototype.这个对象的是个例外，它的__proto__值为null。      
+
+        https://upload-images.jianshu.io/upload_images/2404178-70684ddd20c13efb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&_=6014925
+ 
+#### instanceof  2021/01/23
+
+        - instanceof运算符用来判断一个构造函数的prototype属性所指向的对象是否存在另外一个要检测对象的原型链上
+
+        function Person(){
+
+        };
+        var p =new Person();
+        console.log(p instanceof Person);//true
+
+        function Person() {}
+        console.log(Object instanceof Object);     //true
+        //第一个Object的原型链：Object=>
+        //Object.__proto__ => Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //第二个Object的原型：Object=> Object.prototype
+
+        console.log(Function instanceof Function); //true
+        //第一个Function的原型链：Function=>Function.__proto__ => Function.prototype
+        //第二个Function的原型：Function=>Function.prototype
+
+        console.log(Function instanceof Object);   //true
+        //Function=>
+        //Function.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //Object => Object.prototype
+
+        console.log(Person instanceof Function);      //true
+        //Person=>Person.__proto__=>Function.prototype
+        //Function=>Function.prototype
+
+        console.log(String instanceof String);   //false
+        //第一个String的原型链：String=>
+        //String.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //第二个String的原型链：String=>String.prototype
+
+        console.log(Boolean instanceof Boolean); //false
+        //第一个Boolean的原型链：Boolean=>
+        //Boolean.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //第二个Boolean的原型链：Boolean=>Boolean.prototype
+
+        console.log(Person instanceof Person); //false
+        //第一个Person的原型链：Person=>
+        //Person.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //第二个Person的原型链：Person=>Person.prototype
+
+#### 执行上下文
+
+    1.单线程，在主进程上运行
+
+　　2.同步执行，从上往下按顺序执行
+
+　　3.全局上下文只有一个，浏览器关闭时会被弹出栈
+
+　　4.函数的执行上下文没有数目限制
+
+　　5.函数每被调用一次，都会产生一个新的执行上下文环境
+
+#### 执行上下文栈
+
+    执行全局代码时，会产生一个执行上下文环境，每次调用函数都又会产生执行上下文环境。当函数调用完成时，这个上下文环境以及其中的数据都会被消除，
+    
+    再重新回到全局上下文环境。处于活动状态的执行上下文环境只有一个。
+
+　　其实这是一个压栈出栈的过程。
+
+    https://upload-images.jianshu.io/upload_images/4067575-42d6c06ba1f19f3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+
+    执行上下文共分3个阶段，分别是：
+　　　　1.创建阶段
+
+　　　　　　(1).生成变量对象
+
+　　　　　　(2).建立作用域链
+
+　　　　　　(3).确定 this 指向
+
+ 
+　　　　2.执行阶段
+
+　　　　　　(1).变量赋值
+
+　　　　　　(2).函数引用
+
+　　　　　　(3).执行其他代码
+
+ 
+　　　　3.销毁阶段
+
+　　　　　　执行完毕出栈，等待回收被销毁
+
+
+        
+
+
+
+
+
 
