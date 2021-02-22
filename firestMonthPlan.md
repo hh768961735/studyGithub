@@ -529,8 +529,79 @@
 	
 	使用闭包时，按照作用域链的特点，闭包（函数）外面的变量不会被销毁，因为函数会一直被调用，所以一直存在，如果闭包使用过多会造成内存销毁。
 
+##### 闭包的生命周期
+   1. 产生: 在嵌套内部函数定义执行完时就产生了(不是在调用)
+   2. 死亡: 在嵌套的内部函数成为垃圾对象时 
 
-        
+    function fn1() {
+            // 此时闭包就已经产生了(函数提升, 内部函数对象已经创建了)
+            var a = 2
+            function fn2() {
+                a++
+                console.log(a)
+            }
+            return fn2
+        }
+        var f = fn1()
+        f() // 3
+        f() // 4
+    f = null //闭包死亡(包含闭包的函数对象成为垃圾对象)
+
+##### 闭包自定义js模块
+###### 自定义js模块
+   + 具有特定功能的js文件
+   + 将所有的是数据和功能都封装在一个函数体内部（私有的）
+   + 只向外暴露一个包含n跟对象的对象或函数
+   + 模块的使用者只需要通过模块暴露的对象调用方法来实现对应的功能
+    方法一：
+   //js文件1
+    function MyModule(){
+        var msg = 'hello World';
+        function ToUpper(){
+                console.log(msg.toUpperCase());
+        }
+            function ToLower(){
+                console.log(msg.toLowerCase());
+        }
+        <!-- 向外暴露对象 -->
+        return {
+                ToUpper:ToUpper,
+                ToLower:ToLower
+        }
+    }
+
+    //引入js1文件
+    <script type="text/javascript" src="js1.js"></script>
+    <script type="text/javascript" src="js2.js"></script>
+    <script type="text/javascript" >
+        var module = MyModule();
+        module.ToUpper();
+        module.ToLower();
+    </script>
+
+     方法二：
+   //js文件1
+    (function MyModule(){
+        var msg = 'hello World';
+        function ToUpper(){
+                console.log(msg.toUpperCase());
+        }
+            function ToLower(){
+                console.log(msg.toLowerCase());
+        }
+        windows.nmoudle = {
+                ToUpper:ToUpper,
+                ToLower:ToLower
+        }
+    })();
+
+    //引入js1文件
+    <script type="text/javascript" src="js1.js"></script>
+    <script type="text/javascript" src="js2.js"></script>
+    <script type="text/javascript" >
+        nmoudle.ToUpper();
+        nmoudle.ToLower();
+    </script>
 
 
 
