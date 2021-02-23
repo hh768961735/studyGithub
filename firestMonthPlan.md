@@ -1,21 +1,21 @@
 #### 函数 2021/01/16
-##### 什么是函数
+#### 什么是函数
         - 函数是被设计为执行特定任务的代码块。
 
         - 函数会在某代码调用它时被执行。
-##### 函数表达式
+#### 函数表达式
         - 函数可以通过一个表达式定义。
 
         - 函数表达式可以存储在变量中：
             var x = function (a, b) {
                 return a * b
                 };
-##### Function() 构造函数
+#### Function() 构造函数
         - 函数同样可以通过内置的 JavaScript 函数构造器（Function()）定义。
             var myFunction = new Function("a", "b", "return a * b");
             var x = myFunction(4, 3);
 
-##### 函数提升（Hoisting）
+#### 函数提升（Hoisting）
         - 提升（Hoisting）是 JavaScript 默认将当前作用域提升到前面去的的行为。
 
         - 提升（Hoisting）应用在变量的声明与函数的声明。
@@ -26,7 +26,7 @@
             function myFunction(y) {
                 return y * y;
             }
-##### 自调用函数
+#### 自调用函数
         - 函数表达式可以 "自调用"。
 
         - 自调用表达式会自动调用。
@@ -41,7 +41,7 @@
             var x = "Hello!!";      // 我将调用自己
         })();
 
-##### 函数是对象
+#### 函数是对象
         - 在 JavaScript 中使用 typeof 操作符判断函数类型将返回 "function" 。
 
         - 但是JavaScript 函数描述为一个对象更加准确。
@@ -54,7 +54,7 @@
             return arguments.length;
         }
 
-##### 箭头函数
+#### 箭头函数
         - ES6 新增了箭头函数。
 
         - 箭头函数表达式的语法比普通函数表达式更简洁。
@@ -68,7 +68,7 @@
         const x = (x, y) => x * y;
 
 #### 回调函数 2021/01/16
-##### 什么是回调函数
+#### 什么是回调函数
         - 一个函数被作为参数传递给另一个函数（在这里我们把另一个函数叫做“otherFunction”），回调函数在otherFunction中被调用。
 
         //它就是回调函数
@@ -80,7 +80,7 @@
             alert("Btn 1 Clicked");
         }
         $("#btn_1").click(click);  
-##### 回调函数是怎样运作的
+#### 回调函数是怎样运作的
         - 因为函数在Javascript中是第一类对象，我们像对待对象一样对待函数，因此我们能像传递变量一样传递函数，在函数中返回函数，
         - 在其他函数中使用函数。当我们将一个回调函数作为参数传递给另一个函数是，我们仅仅传递了函数定义。我们并没有在参数中执行函数。
         - 我们并不传递像我们平时执行函数一样带有一对执行小括号()的函数。
@@ -110,7 +110,7 @@
             }
             getInput({name:"Rich",speciality:"Javascript"}, call);
 
-##### JavaScript this 关键字 2021/01/17
+#### JavaScript this 关键字 2021/01/17
     面向对象语言中 this 表示当前对象的一个引用。
 
     但在 JavaScript 中 this 不是固定不变的，它会随着执行环境的改变而改变。
@@ -121,7 +121,7 @@
     - 在函数中，在严格模式下，this 是未定义的(undefined)。
     - 在事件中，this 表示接收事件的元素。
     - 类似 call() 和 apply() 方法可以将 this 引用到任何对象。
-##### 方法中的 this
+#### 方法中的 this
     - 在对象方法中， this 指向调用它所在方法的对象。
 
     - fullName 方法所属的对象就是 person。   
@@ -134,20 +134,20 @@
                 return this.firstName + " " + this.lastName;
             }
         };      
-##### 单独使用 this
+#### 单独使用 this
         - 单独使用 this，则它指向全局(Global)对象。
 
         - 在浏览器中，window 就是该全局对象为 [object Window]:
 
         var x = this;
-##### 函数中使用 this（默认）
+#### 函数中使用 this（默认）
         - 在函数中，函数的所属者默认绑定到 this 上。
 
         function myFunction() {
             return this;
         }
 
-##### 函数中使用 this（严格模式）
+#### 函数中使用 this（严格模式）
         - 严格模式下函数是没有绑定到 this 上，这时候 this 是 undefined。
 
         "use strict";
@@ -155,7 +155,7 @@
             return this;
         }
 
-##### 显式函数绑定
+#### 显式函数绑定
         - 在 JavaScript 中函数也是对象，对象则有方法，apply 和 call 就是函数对象的方法。这两个方法异常强大，他们允许切换函数执行的上下文环境（context），即 this 绑定的对象。
 
         - 在下面实例中，当我们使用 person2 作为参数来调用 person1.fullName 方法时, this 将指向 person2, 即便它是 person1 的方法：
@@ -174,7 +174,7 @@
 
 #### 函数中的prototype
 
-##### 原型（对象属性）
+#### 原型（对象属性）
         - Javascript规定，每一个函数都有一个prototype对象属性，指向另一个对象（原型链上面的）。
 
         - prototype(对象属性)的所有属性和方法，都会被构造函数的实例继承。这意味着，我们可以把那些不变(公用)的属性和方法，直接定义在prototype对象属性上。
@@ -183,7 +183,7 @@
 
         - prototype可以让所有对象实例共享它所包含的属性和方法。也就是说，不必在构造函数中定义对象信息，而是可以直接将这些信息添加到原型中。
 
-##### 原型链 （JS原型与原型链继承）
+#### 原型链 （JS原型与原型链继承）
         - 实例对象与原型之间的连接，叫做原型链。proto( 隐式连接 )
 
         - JS在创建对象的时候，都有一个叫做proto的内置属性，用于指向创建它的函数对象的原型对象prototype。
@@ -201,7 +201,7 @@
             var p = new Person()
             console.log(Person.prototype); // Object{} 
             console.log(p.prototype); //undefined
-##### 浅谈constructor
+#### 浅谈constructor
 
         - 在 Javascript 语言中，constructor 属性是专门为 function 而设计的，它存在于每一个 function 的prototype 属性中。这个 constructor 保存了指向 function 的一个引用。
             function Person() {
@@ -247,7 +247,7 @@
                     console.log(boy.name);   //alex
                     console.log(girl.sayHello === boy.sayHello);  //true          
 
-##### JS 在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做 __proto__ 的内置属性，用于指向创建它的构造函数的原型对象。
+#### JS 在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做 __proto__ 的内置属性，用于指向创建它的构造函数的原型对象。
 
         -   var obj = []
             console.log(obj.__proto__ === Array.prototype)//true
@@ -354,14 +354,14 @@
 
 #### 作用域与作用域链
 		作用域是可访问变量的集合。
-##### JavaScript 作用域
+#### JavaScript 作用域
    + 在 JavaScript 中, 对象和函数同样也是变量。
    
    + 在 JavaScript 中, 作用域为可访问变量，对象，函数的集合。
 
    + JavaScript 函数作用域: 作用域在函数内修改。 
    
-##### JavaScript 局部作用域
+#### JavaScript 局部作用域
 		
    + 变量在函数内声明，变量为局部作用域。
 
@@ -376,7 +376,7 @@
 	因为局部变量只作用于函数内，所以不同的函数可以使用相同名称的变量。
 	局部变量在函数开始执行时创建，函数执行完后局部变量会自动销毁。
 	
-##### JavaScript 全局变量
+#### JavaScript 全局变量
 	变量在函数外定义，即为全局变量。
 	
 	全局变量有 全局作用域: 网页中所有脚本和函数均可使用。 
@@ -388,7 +388,7 @@
 	    // 函数内可调用 carName 变量
 	}
 	
-##### JavaScript 变量生命周期
+#### JavaScript 变量生命周期
 	JavaScript 变量生命周期在它声明时初始化。
 	
 	局部变量在函数执行完毕后销毁。
@@ -415,7 +415,7 @@
 	
 	私有变量可以用到闭包。
 	
-##### 全局变量
+#### 全局变量
 	函数可以访问由函数内部定义的变量，如：
 
 	function myFunction() {
@@ -444,7 +444,7 @@
 	
 	变量声明时如果不使用 var 关键字，那么它就是一个全局变量，即便它在函数内定义。
 	
-##### JavaScript 内嵌函数
+#### JavaScript 内嵌函数
 	所有函数都能访问全局变量。  
 	
 	实际上，在 JavaScript 中，所有函数都能访问它们上一层的作用域。
@@ -462,7 +462,7 @@
 	    return counter; 
 	}
 	
-##### JavaScript 闭包
+#### JavaScript 闭包
 	var add = (function () {
 	    var counter = 0;
 	    return function () {
@@ -484,7 +484,7 @@
 	
 	计数器受匿名函数的作用域保护，只能通过 add 方法修改。
 	
-##### 闭包原理
+#### 闭包原理
 	闭包的实现原理，其实是利用了作用域链的特性，我们都知道作用域链就是在当前执行环境下访问某个变量时，
 	如果不存在就一直向外层寻找，最终寻找到最外层也就是全局作用域，这样就形成了一个链条。
 	
@@ -512,7 +512,7 @@
 	per();// 20
 	per();// 21
 	
-##### 闭包的作用
+#### 闭包的作用
 	作用1：隐藏变量，避免全局污染
 	
 	作用2：可以读取函数内部的变量
@@ -529,7 +529,7 @@
 	
 	使用闭包时，按照作用域链的特点，闭包（函数）外面的变量不会被销毁，因为函数会一直被调用，所以一直存在，如果闭包使用过多会造成内存销毁。
 
-##### 闭包的生命周期
+#### 闭包的生命周期
    1. 产生: 在嵌套内部函数定义执行完时就产生了(不是在调用)
    2. 死亡: 在嵌套的内部函数成为垃圾对象时 
 
@@ -547,8 +547,8 @@
         f() // 4
     f = null //闭包死亡(包含闭包的函数对象成为垃圾对象)
 
-##### 闭包自定义js模块
-###### 自定义js模块
+#### 闭包自定义js模块
+##### 自定义js模块
    + 具有特定功能的js文件
    + 将所有的是数据和功能都封装在一个函数体内部（私有的）
    + 只向外暴露一个包含n跟对象的对象或函数
@@ -602,6 +602,113 @@
         nmoudle.ToUpper();
         nmoudle.ToLower();
     </script>
+
+#### 内存溢出与内存泄露
+##### 闭包的缺点
+   + 函数执行完之后，函数内部的局部变量的不到释放，占用内存时间过长
+   + 容易造成内存泄露
+
+   function fn(){
+       var arr = new Array(100000);
+       function fn2(){
+           console.log(arr.length);
+       }
+       return fun2;
+   }
+
+   var ff = fn();
+   ff();
+
+   ff = null; //垃圾回收，回收内存
+   + 内存溢出
+        当程序运行需要的内存超过了最大内存时，就会造成内存溢出
+
+        var obj;
+        for(let i = 0; i < 10000; i++){
+            obj[i] = new Array(1000000);
+        }
+   + 内存泄露
+        占用的内存没有及时释放
+        常见的内存泄露：
+            1、意外的全局变量
+            2、未及时清理的定时器或者回调
+            3、闭包
+
+#### 对象创建模式
+##### 创建Object对象
+        var obj = new Object();
+        obj.name = 'Thomas';
+        obj.age = 24;
+        obj.sayName = function(){
+            console.log(this.name)
+        }
+##### 对象字面量(需要创建多个对象，代码冗余)
+        var obj = {
+            name: 'Thomas',
+            age: 24,
+            sayName: function(){
+                console.log(this.name)
+            }
+        }
+
+##### 工厂模式
+    function creatPerson(name,age,sex){
+	var obj=new Object();
+	obj.name=name;
+	obj.age=age;
+	obj.sex=sex;
+	obj.sayName=function(){
+		console.log(this.name)
+	};
+	return obj;
+    }
+    var obj1=creatPerson("Bob",18,"male");  
+    obj1.sayName();
+   + 工厂模式创建的对象，使用的构造函数都是object，不方便区分多种对象，无法解决对象识别的问题
+
+##### 构造函数
+   function Person(name,age,gender){
+	this.name=name;
+	this.age=age;
+	this.gender=gender;
+	this.sayName=function(){
+		alert(this.name);
+	};
+    }
+    function Dog(name,age){
+        this.name=name;
+        this.age=age;
+        this.sayName=function(){
+            alert(this.age);
+        }
+    }
+    var per=new Person("Bob",21,"male");
+    var dog=new Dog("John",20);
+    //console.log(per.sayName());
+    //console.log(dog.sayName());
+==================
+   - 不会显式的创建对象
+   - 直接将属性赋值给this(新创建的对象)
+   - 没有返回值
+   - instanceof可以检查一个对象是否是一个类的实例
+
+##### 原型模式
+     function Person(name,age,gender){
+	    this.name=name;
+	    this.age=age;
+	    this.gender=gender;
+    }
+
+    Person.prototype.setName = function(){
+        this.name = name; 
+    }
+
+    var person1 = new Person();
+    var person2 = new Person();
+	person1.name="John";
+    person2.name="Thomas";
+
+
 
 
 
